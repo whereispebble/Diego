@@ -75,12 +75,20 @@
   }
 
   .inner {
-    padding: 105px 18px 70px;
+    padding: 105px 16px 70px;
   }
 
   .inner-header {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .inner-header h1 {
+    max-width: 100%;
+    font-size: clamp(52px, 18vw, 76px);
+    letter-spacing: 0;
+    line-height: .82;
+    overflow-wrap: anywhere;
   }
 
   .inner-header p {
@@ -96,21 +104,29 @@
   }
 
   .profile-layout {
+    min-width: 0;
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
   .profile-gallery {
+    min-width: 0;
     grid-template-columns: 1fr 1fr;
   }
 
+  .profile-gallery img {
+    min-width: 0;
+  }
+
   .profile-text {
-    font-size: 34px;
+    font-size: clamp(26px, 9vw, 34px);
+    overflow-wrap: anywhere;
   }
 
   .profile-measurements div,
   .profile-contact a {
-    grid-template-columns: 86px 1fr;
+    grid-template-columns: minmax(64px, 24vw) minmax(0, 1fr);
+    gap: 12px;
   }
 
   .booking-grid {
@@ -182,5 +198,23 @@
     top: auto;
     bottom: 106px;
     transform: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .inner {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .profile-measurements div,
+  .profile-contact a {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .profile-measurements strong,
+  .profile-contact strong {
+    font-size: 16px;
   }
 }
