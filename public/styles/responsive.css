@@ -12,12 +12,16 @@
     font-size: 13px;
   }
 
-  .slide-grid {
-    grid-template-columns: 1fr;
+  .desktop-slide {
+    display: none;
   }
 
-  .slide-image:first-child {
-    display: none;
+  .mobile-slide {
+    display: block;
+  }
+
+  .slide-grid {
+    grid-template-columns: 1fr;
   }
 
   .slide-meta {
@@ -36,7 +40,7 @@
   .hero-cta label {
     width: 100%;
     max-width: calc(100vw - 56px);
-    font-size: clamp(30px, 9.2vw, 40px);
+    font-size: clamp(26px, 8vw, 34px);
     line-height: .9;
     overflow-wrap: normal;
   }
@@ -44,7 +48,7 @@
   .hero-mail {
     grid-template-columns: 1fr;
     grid-template-rows: none;
-    width: min(330px, calc(100vw - 56px));
+    width: min(300px, calc(100vw - 56px));
   }
 
   .hero-mail button {
@@ -55,7 +59,7 @@
   .hero-mail input,
   .hero-mail textarea,
   .hero-mail button {
-    min-height: 38px;
+    min-height: 36px;
   }
 
   .hero-mail textarea {
@@ -134,6 +138,15 @@
 
   .project-title {
     font-size: 31px;
+  }
+
+  .videobook-layout {
+    min-height: auto;
+  }
+
+  .videobook-video {
+    max-height: calc(100svh - 210px);
+    aspect-ratio: 9 / 16;
   }
 
   .archive-grid {

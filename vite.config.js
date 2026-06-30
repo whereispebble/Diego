@@ -8,6 +8,7 @@ export default {
       input: {
         home: resolveProjectFile("index.html"),
         perfil: resolveProjectFile("perfil.html"),
+        videobook: resolveProjectFile("videobook.html"),
         proyectos: resolveProjectFile("proyectos.html"),
         archivo: resolveProjectFile("archivo.html"),
         reservas: resolveProjectFile("reservas.html")

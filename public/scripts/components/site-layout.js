@@ -2,7 +2,7 @@
   const navigation = [
     { id: "home", key: "nav.home", label: "Inicio", href: "/" },
     { id: "information", key: "nav.information", label: "Perfil", href: "/perfil.html" },
-    { id: "projects", key: "nav.projects", label: "Proyectos", href: "/proyectos.html" },
+    { id: "projects", key: "nav.projects", label: "Videobook", href: "/videobook.html" },
     { id: "archive", key: "nav.archive", label: "Archivo", href: "/archivo.html" }
   ];
 

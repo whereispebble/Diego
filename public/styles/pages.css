@@ -238,6 +238,22 @@
   text-align: right;
 }
 
+.videobook-layout {
+  display: grid;
+  min-height: calc(100svh - 260px);
+  place-items: center;
+}
+
+.videobook-video {
+  display: block;
+  width: min(1180px, 100%);
+  max-height: calc(100svh - 230px);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--black);
+  border: 1px solid var(--line);
+}
+
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -299,7 +315,7 @@
   grid-template-rows: auto 1fr auto;
   padding: 18px;
   color: var(--red);
-  background: rgba(8, 8, 8, .96);
+  background: var(--black);
 }
 
 .collection-viewer.is-open {
@@ -339,6 +355,8 @@
 }
 
 .collection-stage {
+  position: relative;
+  z-index: 3;
   display: grid;
   min-height: 0;
   margin: 0;
@@ -347,9 +365,13 @@
 }
 
 .collection-stage img {
+  position: relative;
+  z-index: 4;
   width: auto;
   max-width: 100%;
   max-height: calc(100svh - 170px);
+  opacity: 1;
+  filter: none;
   object-fit: contain;
 }
 
@@ -369,6 +391,8 @@
 }
 
 .collection-thumbs {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 6px;
   max-width: 100%;

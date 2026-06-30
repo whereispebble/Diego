@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Videobook de Diego Assifawosen" data-i18n-content="projects.meta" />
+    <title data-i18n-title="projects.meta">Videobook - Diego Assifawosen</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script src="/scripts/i18n.js" defer></script>
+    <script src="/scripts/components/site-layout.js" defer></script>
+  </head>
+  <body>
+    <site-header active-page="projects"></site-header>
+
+    <main>
+      <section class="page">
+        <div class="inner">
+          <header class="inner-header">
+            <h1 data-i18n="projects.title">Videobook</h1>
+            <p data-i18n="projects.intro">Video de presentacion, movimiento y presencia frente a camara.</p>
+          </header>
+
+          <section class="videobook-layout" aria-label="Videobook">
+            <video class="videobook-video" controls playsinline preload="metadata" poster="/images/home/home-crouch-desktop.webp">
+              <source src="/videos/videobook.mp4" type="video/mp4" />
+              <span data-i18n="projects.videoFallback">Anade el archivo de video en public/videos/videobook.mp4 para verlo aqui.</span>
+            </video>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+  </body>
+</html>
