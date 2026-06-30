@@ -293,7 +293,7 @@
   width: min(380px, 100%);
   color: var(--red);
   background: rgba(255, 255, 255, .62);
-  border: 1px solid rgba(255, 255, 255, .38);
+  border: 1px solid rgba(255, 255, 255, .18);
   backdrop-filter: blur(10px);
 }
 
