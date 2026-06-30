@@ -1,0 +1,173 @@
+@media (max-width: 800px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .site-logo {
+    top: 27px;
+    font-size: 13px;
+  }
+
+  .slide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-image:first-child {
+    display: none;
+  }
+
+  .slide-meta {
+    display: none;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .hero-cta {
+    padding: 16px 28px;
+    gap: 10px;
+  }
+
+  .hero-cta label {
+    width: 100%;
+    max-width: calc(100vw - 56px);
+    font-size: clamp(30px, 9.2vw, 40px);
+    line-height: .9;
+    overflow-wrap: normal;
+  }
+
+  .hero-mail {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    width: min(330px, calc(100vw - 56px));
+  }
+
+  .hero-mail button {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hero-mail input,
+  .hero-mail textarea,
+  .hero-mail button {
+    min-height: 38px;
+  }
+
+  .hero-mail textarea {
+    padding-top: 14px;
+  }
+
+  .bottom-links {
+    gap: 14px;
+  }
+
+  .bottom-bar > span {
+    display: none;
+  }
+
+  .inner {
+    padding: 105px 18px 70px;
+  }
+
+  .inner-header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .inner-header p {
+    justify-self: start;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-copy {
+    font-size: 31px;
+  }
+
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .profile-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .profile-text {
+    font-size: 34px;
+  }
+
+  .profile-measurements div,
+  .profile-contact a {
+    grid-template-columns: 86px 1fr;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-panel {
+    min-height: 360px;
+    padding: 18px;
+  }
+
+  .booking-panel p {
+    margin-top: 56px;
+    font-size: 38px;
+  }
+
+  .booking-details div {
+    grid-template-columns: 74px 1fr;
+  }
+
+  .project {
+    grid-template-columns: 38px 1fr 50px;
+    min-height: 76px;
+  }
+
+  .project-title {
+    font-size: 31px;
+  }
+
+  .archive-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .archive-card {
+    min-height: 0;
+  }
+
+  .archive-preview img {
+    min-height: 0;
+  }
+
+  .archive-label {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .collection-viewer {
+    padding: 16px;
+  }
+
+  .collection-stage {
+    padding: 58px 0 18px;
+  }
+
+  .collection-stage img {
+    max-height: calc(100svh - 195px);
+  }
+
+  .viewer-arrow {
+    top: auto;
+    bottom: 106px;
+    transform: none;
+  }
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Archivo de Diego Assifawosen" data-i18n-content="archive.meta" />
+    <title data-i18n-title="archive.meta">Archivo - Diego Assifawosen</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="preload" as="image" href="/images/rayban/img10.webp" />
+    <link rel="preload" as="image" href="/images/rayban/img20.webp" />
+    <link rel="preload" as="image" href="/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-11.jpg.webp" />
+    <link rel="preload" as="image" href="/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-26.jpg.webp" />
+    <script src="/scripts/i18n.js" defer></script>
+    <script src="/scripts/components/site-layout.js" defer></script>
+    <script src="/scripts/archive.js" defer></script>
+  </head>
+  <body>
+    <site-header active-page="archive"></site-header>
+
+    <main>
+      <section class="page">
+        <div class="inner">
+          <header class="inner-header">
+            <h1 data-i18n="archive.title">Archivo</h1>
+            <p data-i18n="archive.intro">Polaroids, pruebas de camara, backstage y momentos fuera de campana.</p>
+          </header>
+
+          <div class="archive-grid" data-archive-grid></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="collection-viewer" data-collection-viewer aria-hidden="true">
+      <div class="collection-topbar">
+        <div>
+          <p data-collection-title>Ray-Ban</p>
+          <span data-collection-count>1 / 9</span>
+        </div>
+        <button class="viewer-button" type="button" data-close-collection aria-label="Cerrar coleccion" data-i18n-aria-label="archive.closeCollection" data-i18n="archive.close">
+          Cerrar
+        </button>
+      </div>
+
+      <button class="viewer-arrow viewer-prev" type="button" data-previous-image aria-label="Imagen anterior" data-i18n-aria-label="archive.previousImage" data-i18n="archive.previous">
+        Prev
+      </button>
+      <figure class="collection-stage">
+        <img data-collection-image src="/images/rayban/img10.webp" alt="Ray-Ban 1" decoding="async" />
+      </figure>
+      <button class="viewer-arrow viewer-next" type="button" data-next-image aria-label="Imagen siguiente" data-i18n-aria-label="archive.nextImage" data-i18n="archive.next">
+        Next
+      </button>
+
+      <div class="collection-thumbs" data-collection-thumbs aria-label="Imagenes de la coleccion" data-i18n-aria-label="archive.thumbs"></div>
+    </div>
+
+    <site-footer></site-footer>
+  </body>
+</html>

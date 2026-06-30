@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nombre Modelo — Portfolio</title>
+  <style>
+    @import url("https://fonts.bunny.net/css?family=banana-grotesk:400,500,600");
+
+    :root {
+      --black: #080808;
+      --white: #fff;
+      --red: rgb(228, 0, 43);
+      --line: rgba(228, 0, 43, .42);
+      --serif: "Banana Grotesk", Arial, sans-serif;
+      --sans: "Banana Grotesk", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--black); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--red);
+      background: var(--black);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body.is-locked { overflow: hidden; }
+    button, a { color: inherit; font: inherit; }
+    button { border: 0; cursor: pointer; }
+    a { text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    .site-logo {
+      position: fixed;
+      z-index: 30;
+      top: 21px;
+      left: 20px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -.02em;
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    .desktop-nav {
+      position: fixed;
+      z-index: 30;
+      top: 18px;
+      right: 18px;
+      display: flex;
+      background: var(--white);
+      color: var(--red);
+      height: 34px;
+    }
+    .nav-button {
+      position: relative;
+      min-width: 92px;
+      padding: 0 15px;
+      background: transparent;
+      overflow: hidden;
+      text-transform: uppercase;
+      font-size: 9px;
+      letter-spacing: .025em;
+    }
+    .nav-button::after {
+      content: "";
+      position: absolute;
+      inset: auto 12px 7px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .nav-button:hover::after,
+    .nav-button.is-active::after { transform: scaleX(1); }
+    .nav-icon { min-width: 40px; border-left: 1px solid rgba(0,0,0,.15); }
+
+    .menu-button {
+      display: none;
+      position: fixed;
+      z-index: 31;
+      top: 16px;
+      right: 16px;
+      height: 34px;
+      padding: 0 14px;
+      color: var(--red);
+      background: var(--white);
+      text-transform: uppercase;
+      font-size: 9px;
+    }
+
+    .page { display: none; min-height: 100svh; }
+    .page.is-active { display: block; }
+
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 620px;
+      overflow: hidden;
+      background: #111;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .9s cubic-bezier(.2,.7,.2,1);
+    }
+    .slide.is-active { opacity: 1; }
+    .slide-grid {
+      display: grid;
+      grid-template-columns: 48% 52%;
+      width: 100%;
+      height: 100%;
+    }
+    .slide-image {
+      position: relative;
+      overflow: hidden;
+      background: #111;
+    }
+    .slide-image img {
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 5.5s ease-out;
+      filter: contrast(1.02);
+    }
+    .slide.is-active .slide-image img { transform: scale(1); }
+    .slide-image:first-child img { object-position: center 25%; }
+    .slide-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.24), transparent 55%);
+    }
+
+    .hero-copy {
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      left: clamp(60px, 14.5vw, 190px);
+      width: min(390px, 38vw);
+      transform: translateY(-50%);
+    }
+    .hero-kicker {
+      margin: 0 0 15px;
+      font-size: 9px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 5.2vw, 76px);
+      font-weight: 400;
+      line-height: .86;
+      letter-spacing: -.035em;
+    }
+    .hero-actions { display: flex; margin-top: 30px; }
+    .action {
+      min-height: 34px;
+      padding: 0 15px;
+      border: 1px solid var(--white);
+      background: var(--white);
+      color: var(--red);
+      text-transform: uppercase;
+      font-size: 8px;
+      letter-spacing: .025em;
+    }
+    .action + .action {
+      background: var(--white);
+      color: var(--red);
+      border-left: 1px solid var(--red);
+    }
+
+    .arrow {
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      width: 25px;
+      height: 25px;
+      border: 1px solid var(--white);
+      color: var(--red);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1;
+    }
+    .arrow:hover { color: var(--white); background: var(--red); }
+    .arrow-prev { left: 18px; }
+    .arrow-next { right: 18px; }
+
+    .slide-meta {
+      position: absolute;
+      z-index: 5;
+      right: calc(26% - 125px);
+      bottom: 50px;
+      width: 250px;
+    }
+    .slide-meta strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .slide-meta span {
+      display: block;
+      margin-top: 4px;
+      text-transform: uppercase;
+      font-size: 8px;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 26px;
+      padding: 0 18px;
+      color: var(--red);
+      background: var(--black);
+      text-transform: uppercase;
+      font-size: 7px;
+      letter-spacing: .02em;
+    }
+    .bottom-links { display: flex; gap: 36px; }
+    .bottom-links a:hover { opacity: .55; }
+
+    .inner {
+      min-height: 100svh;
+      padding: 112px 24px 80px;
+      color: var(--red);
+      background: #e9e5dc;
+    }
+    .inner-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      margin-bottom: 60px;
+      border-bottom: 1px solid rgba(228,0,43,.45);
+      padding-bottom: 14px;
+    }
+    .inner-header h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(64px, 10vw, 145px);
+      font-weight: 400;
+      line-height: .7;
+      letter-spacing: -.05em;
+    }
+    .inner-header p {
+      justify-self: end;
+      max-width: 420px;
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 38vw) 1fr;
+      gap: clamp(40px, 8vw, 130px);
+      align-items: start;
+    }
+    .about-grid img { aspect-ratio: 4/5; object-fit: cover; }
+    .about-copy {
+      max-width: 650px;
+      font-family: var(--serif);
+      font-size: clamp(27px, 3.1vw, 48px);
+      line-height: 1.02;
+    }
+    .about-copy p { margin: 0 0 30px; }
+    .clients {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(228,0,43,.45);
+      font-family: var(--sans);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .project-list { border-top: 1px solid rgba(228,0,43,.45); }
+    .project {
+      display: grid;
+      grid-template-columns: 60px 1fr 120px;
+      align-items: center;
+      min-height: 90px;
+      border-bottom: 1px solid rgba(228,0,43,.45);
+      transition: padding .3s, background .3s;
+    }
+    .project:hover { padding: 0 18px; background: var(--red); color: var(--black); }
+    .project-index, .project-year { font-size: 9px; }
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 70px);
+      line-height: 1;
+    }
+    .project-year { text-align: right; }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .archive-card {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+      background: #111;
+    }
+    .archive-card img {
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.92);
+      transition: transform .6s ease, filter .6s ease;
+    }
+    .archive-card:hover img { transform: scale(1.035); filter: saturate(1); }
+    .archive-card span {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      z-index: 29;
+      inset: 0;
+      display: none;
+      align-items: flex-end;
+      padding: 80px 20px 55px;
+      color: var(--red);
+      background: var(--white);
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu nav { width: 100%; }
+    .mobile-link {
+      display: block;
+      width: 100%;
+      padding: 5px 0;
+      color: var(--red);
+      background: transparent;
+      text-align: left;
+      font-family: var(--serif);
+      font-size: 54px;
+      line-height: .95;
+    }
+
+    @media (max-width: 800px) {
+      .desktop-nav { display: none; }
+      .menu-button { display: block; }
+      .site-logo { top: 27px; font-size: 13px; }
+      .slide-grid { grid-template-columns: 1fr; }
+      .slide-image:first-child { display: none; }
+      .hero-copy { left: 24px; top: auto; bottom: 118px; width: calc(100% - 48px); transform: none; }
+      .hero-title { font-size: clamp(47px, 13vw, 68px); line-height: .9; }
+      .slide-meta { display: none; }
+      .arrow { top: 44%; }
+      .bottom-links { gap: 14px; }
+      .bottom-bar > span { display: none; }
+      .inner { padding: 105px 18px 70px; }
+      .inner-header { grid-template-columns: 1fr; gap: 28px; }
+      .inner-header p { justify-self: start; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-copy { font-size: 31px; }
+      .project { grid-template-columns: 38px 1fr 50px; min-height: 76px; }
+      .project-title { font-size: 31px; }
+      .archive-grid { grid-template-columns: 1fr 1fr; }
+      .archive-card { min-height: 330px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-logo" href="#" data-page="home" aria-label="Inicio">DIEGO ASSIFAWOSEN</a>
+
+  <nav class="desktop-nav" aria-label="Navegación principal">
+    <button class="nav-button is-active" data-page="home">Inicio</button>
+    <button class="nav-button" data-page="information">Perfil</button>
+    <button class="nav-button" data-page="projects">Proyectos</button>
+    <button class="nav-button" data-page="archive">Archivo</button>
+    <button class="nav-button nav-icon" data-page="information" aria-label="Contacto">↗</button>
+  </nav>
+  <button class="menu-button" id="menuButton">Menú</button>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <button class="mobile-link" data-page="home">Inicio</button>
+      <button class="mobile-link" data-page="information">Perfil</button>
+      <button class="mobile-link" data-page="projects">Proyectos</button>
+      <button class="mobile-link" data-page="archive">Archivo</button>
+    </nav>
+  </div>
+
+  <main>
+    <section class="page is-active" id="page-home">
+      <div class="hero">
+        <article class="slide is-active">
+          <div class="slide-grid">
+            <div class="slide-image"><img src="assets/rayban/img44.jpg" alt="Retrato de Diego con gafas Ray-Ban"></div>
+            <div class="slide-image"><img src="assets/rayban/img56.jpg" alt="Retrato editorial de Diego"></div>
+          </div>
+        </article>
+        <article class="slide">
+          <div class="slide-grid">
+            <div class="slide-image"><img src="assets/rayban/img32.jpg" alt="Detalle de gafas Ray-Ban"></div>
+            <div class="slide-image"><img src="assets/rayban/img38.jpg" alt="Editorial Ray-Ban de Diego"></div>
+          </div>
+        </article>
+        <article class="slide">
+          <div class="slide-grid">
+            <div class="slide-image"><img src="assets/rayban/img50.jpg" alt="Retratos en blanco y negro de Diego"></div>
+            <div class="slide-image"><img src="assets/rayban/img63.jpg" alt="Retrato de campaña Ray-Ban"></div>
+          </div>
+        </article>
+
+        <button class="arrow arrow-prev" id="prev" aria-label="Anterior">←</button>
+        <button class="arrow arrow-next" id="next" aria-label="Siguiente">→</button>
+        <div class="slide-meta">
+          <strong id="metaTitle">Ray-Ban SS26</strong>
+          <span id="metaSubtitle">Editorial · Madrid · 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-information">
+      <div class="inner">
+        <header class="inner-header">
+          <h1>Perfil</h1>
+          <p>Modelo editorial y comercial con base en Madrid. Disponible para campañas, pasarela, beauty y proyectos internacionales.</p>
+        </header>
+        <div class="about-grid">
+          <img src="assets/rayban/img26.jpg" alt="Diego en la campaña Ray-Ban">
+          <div class="about-copy">
+            <p>Una presencia versátil construida a través del gesto, la forma y una sensibilidad contemporánea.</p>
+            <p>Su trabajo conecta moda, imagen y movimiento para crear personajes que permanecen más allá de la campaña.</p>
+            <div class="clients">
+              <span>Vogue España</span><span>Massimo Dutti</span>
+              <span>Numéro</span><span>Palomo Spain</span>
+              <span>Cosmopolitan</span><span>Adolfo Domínguez</span>
+              <span>Neo2</span><span>Harper's Bazaar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-projects">
+      <div class="inner">
+        <header class="inner-header">
+          <h1>Trabajo</h1>
+          <p>Selección de campañas, editoriales y colaboraciones recientes.</p>
+        </header>
+        <div class="project-list">
+          <a class="project" href="#"><span class="project-index">001</span><span class="project-title">New Forms</span><span class="project-year">2026</span></a>
+          <a class="project" href="#"><span class="project-index">002</span><span class="project-title">Soft Armour</span><span class="project-year">2025</span></a>
+          <a class="project" href="#"><span class="project-index">003</span><span class="project-title">Night Studies</span><span class="project-year">2025</span></a>
+          <a class="project" href="#"><span class="project-index">004</span><span class="project-title">Objects in Motion</span><span class="project-year">2024</span></a>
+          <a class="project" href="#"><span class="project-index">005</span><span class="project-title">Second Skin</span><span class="project-year">2024</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-archive">
+      <div class="inner">
+        <header class="inner-header">
+          <h1>Archivo</h1>
+          <p>Polaroids, pruebas de cámara, backstage y momentos fuera de campaña.</p>
+        </header>
+        <div class="archive-grid">
+          <a class="archive-card" href="#"><img src="assets/rayban/img10.jpg" alt="Portada editorial Diego"><span>Ray-Ban Cover · 2026</span></a>
+          <a class="archive-card" href="#"><img src="assets/rayban/img20.jpg" alt="Composición Essentials"><span>Essentials · 2026</span></a>
+          <a class="archive-card" href="#"><img src="assets/rayban/img26.jpg" alt="Mosaico de campaña"><span>Campaign System · 2026</span></a>
+          <a class="archive-card" href="#"><img src="assets/rayban/img32.jpg" alt="Detalle de producto"><span>Product Detail · 2026</span></a>
+          <a class="archive-card" href="#"><img src="assets/rayban/img44.jpg" alt="Primer plano de Diego"><span>Portrait · 2026</span></a>
+          <a class="archive-card" href="#"><img src="assets/rayban/img50.jpg" alt="Díptico en blanco y negro"><span>Character Study · 2026</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="bottom-links">
+      <a href="#">Instagram</a>
+      <a href="mailto:contacto@tudominio.com">Email</a>
+      <a href="#">Agency</a>
+    </div>
+    <span>Madrid · España · Disponible worldwide</span>
+    <div class="bottom-links">
+      <a href="#">© 2026</a>
+    </div>
+  </footer>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const meta = [
+      ["Ray-Ban SS26", "Editorial · Madrid · 2026"],
+      ["Make Your Mark", "Campaign · Madrid · 2026"],
+      ["Confidence", "Character Study · Madrid · 2026"]
+    ];
+    let current = 0;
+    let timer;
+
+    function renderSlide(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
+      document.getElementById("metaTitle").textContent = meta[current][0];
+      document.getElementById("metaSubtitle").textContent = meta[current][1];
+      clearTimeout(timer);
+      timer = setTimeout(() => renderSlide(current + 1), 5500);
+    }
+
+    document.getElementById("prev").addEventListener("click", () => renderSlide(current - 1));
+    document.getElementById("next").addEventListener("click", () => renderSlide(current + 1));
+
+    function showPage(name) {
+      document.querySelectorAll(".page").forEach(page => page.classList.toggle("is-active", page.id === "page-" + name));
+      document.querySelectorAll(".nav-button[data-page]").forEach(button => button.classList.toggle("is-active", button.dataset.page === name));
+      document.getElementById("mobileMenu").classList.remove("is-open");
+      document.body.classList.remove("is-locked");
+      document.getElementById("menuButton").textContent = "Menú";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    document.querySelectorAll("[data-page]").forEach(control => {
+      control.addEventListener("click", event => {
+        event.preventDefault();
+        showPage(control.dataset.page);
+      });
+    });
+
+    document.getElementById("menuButton").addEventListener("click", event => {
+      event.stopPropagation();
+      const menu = document.getElementById("mobileMenu");
+      const open = menu.classList.toggle("is-open");
+      document.body.classList.toggle("is-locked", open);
+      event.currentTarget.textContent = open ? "Cerrar" : "Menú";
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") renderSlide(current - 1);
+      if (event.key === "ArrowRight") renderSlide(current + 1);
+      if (event.key === "Escape") {
+        document.getElementById("mobileMenu").classList.remove("is-open");
+        document.body.classList.remove("is-locked");
+        document.getElementById("menuButton").textContent = "Menú";
+      }
+    });
+
+    renderSlide(0);
+  </script>
+</body>
+</html>

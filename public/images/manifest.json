@@ -1,0 +1,52 @@
+{
+  "collections": [
+    {
+      "id": "bioque-studio",
+      "title": "Bioque Studio",
+      "images": [
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-11.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-26.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-54.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-59.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-63.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-76.jpg.webp",
+        "/images/bioque-studio/DIEGO_BY_@BIOQUE.STUDIO-81.jpg.webp"
+      ]
+    },
+    {
+      "id": "perfil",
+      "title": "Perfil",
+      "images": [
+        "/images/perfil/1.webp",
+        "/images/perfil/2.webp",
+        "/images/perfil/3.webp",
+        "/images/perfil/4.webp",
+        "/images/perfil/5.webp",
+        "/images/perfil/6.webp",
+        "/images/perfil/7.webp",
+        "/images/perfil/8.webp",
+        "/images/perfil/9.webp",
+        "/images/perfil/10.webp",
+        "/images/perfil/11.webp",
+        "/images/perfil/12.webp",
+        "/images/perfil/13.webp",
+        "/images/perfil/14.webp"
+      ]
+    },
+    {
+      "id": "rayban",
+      "title": "Ray-Ban",
+      "images": [
+        "/images/rayban/img10.webp",
+        "/images/rayban/img20.webp",
+        "/images/rayban/img26.webp",
+        "/images/rayban/img32.webp",
+        "/images/rayban/img38.webp",
+        "/images/rayban/img44.webp",
+        "/images/rayban/img50.webp",
+        "/images/rayban/img56.webp",
+        "/images/rayban/img63.webp"
+      ]
+    }
+  ]
+}

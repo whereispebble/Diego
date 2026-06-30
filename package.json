@@ -1,0 +1,17 @@
+{
+  "name": "diego-assifawosen-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "prepare:images": "node scripts/optimize-images.mjs && node scripts/generate-image-manifest.mjs",
+    "predev": "npm run prepare:images",
+    "dev": "vite --configLoader runner",
+    "prebuild": "npm run prepare:images",
+    "build": "vite build --configLoader runner",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
+}

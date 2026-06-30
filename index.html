@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio de Diego Assifawosen" data-i18n-content="home.meta" />
+    <title data-i18n-title="home.meta">Diego Assifawosen - Portfolio</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="preload" as="image" href="/images/home/home-standing-mobile.webp" media="(max-width: 800px)" />
+    <link rel="preload" as="image" href="/images/home/home-rayban-desktop.webp" media="(min-width: 801px)" />
+    <link rel="preload" as="image" href="/images/home/home-standing-desktop.webp" media="(min-width: 801px)" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="/scripts/i18n.js" defer></script>
+    <script src="/scripts/components/site-layout.js" defer></script>
+    <script src="/scripts/components/carousel.js" defer></script>
+  </head>
+  <body>
+    <site-header active-page="home"></site-header>
+
+    <main>
+      <section class="page">
+        <div class="hero" data-carousel>
+          <article class="slide is-active">
+            <div class="slide-grid">
+              <div class="slide-image image-rayban">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-rayban-mobile.webp" />
+                  <img src="/images/home/home-rayban-desktop.webp" alt="Retrato Ray-Ban de Diego" width="1200" height="1500" decoding="async" loading="lazy" />
+                </picture>
+              </div>
+              <div class="slide-image image-standing">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-standing-mobile.webp" />
+                  <img src="/images/home/home-standing-desktop.webp" alt="Retrato de Diego de pie en blanco y negro" width="1200" height="1800" decoding="async" fetchpriority="high" />
+                </picture>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-grid">
+              <div class="slide-image image-seated-bw">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-seated-bw-mobile.webp" />
+                  <img src="/images/home/home-seated-bw-desktop.webp" alt="Diego sentado en blanco y negro" width="1200" height="1800" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <div class="slide-image image-orange">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-orange-mobile.webp" />
+                  <img src="/images/home/home-orange-desktop.webp" alt="Diego con chaqueta de cuero sobre fondo naranja" width="1200" height="1600" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-grid">
+              <div class="slide-image image-profile">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-profile-mobile.webp" />
+                  <img src="/images/home/home-profile-desktop.webp" alt="Retrato de perfil de Diego por Bioque Studio" width="1200" height="1600" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <div class="slide-image image-crouch">
+                <picture>
+                  <source media="(max-width: 800px)" srcset="/images/home/home-crouch-mobile.webp" />
+                  <img src="/images/home/home-crouch-desktop.webp" alt="Retrato en blanco y negro de Diego por Bioque Studio" width="1200" height="1600" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+          </article>
+
+          <button class="arrow arrow-prev" type="button" aria-label="Anterior">←</button>
+          <button class="arrow arrow-next" type="button" aria-label="Siguiente">→</button>
+
+          <div class="slide-meta">
+            <strong data-carousel-title>Ray-Ban</strong>
+            <span data-carousel-subtitle>Editorial - Madrid - 2026</span>
+          </div>
+
+          <form class="hero-cta" data-mail-cta>
+            <label for="hero-email" data-i18n="home.cta">¿Hablamos?</label>
+            <div class="hero-mail">
+              <input id="hero-email" name="email" type="email" placeholder="tu email" autocomplete="email" data-i18n-placeholder="home.emailPlaceholder" required />
+              <textarea name="message" placeholder="escribe tu mensaje" rows="1" data-i18n-placeholder="home.messagePlaceholder" required></textarea>
+              <button type="submit" data-i18n="home.send">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+  </body>
+</html>
