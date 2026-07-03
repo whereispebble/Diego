@@ -6,7 +6,7 @@
   const emailConfig = {
     publicKey: "POrS9J_Lx5StD7b83",
     serviceId: "service_d0g6u2h",
-    templateId: "template_izme267"
+    templateId: "template_9anwhs9"
   };
 
   const mobileViewport = window.matchMedia("(max-width: 800px)").matches;
@@ -259,6 +259,7 @@
     button.textContent = t("home.sending");
     button.disabled = true;
     button.classList.remove("is-error");
+    mailForm.elements.time.value = new Date().toLocaleString();
 
     try {
       await window.emailjs.sendForm(emailConfig.serviceId, emailConfig.templateId, mailForm, {

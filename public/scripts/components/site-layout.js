@@ -3,7 +3,7 @@
     { id: "home", key: "nav.home", label: "Inicio", href: "/" },
     { id: "information", key: "nav.information", label: "Perfil", href: "/perfil.html" },
     { id: "projects", key: "nav.projects", label: "Videobook", href: "/videobook.html" },
-    { id: "archive", key: "nav.archive", label: "Archivo", href: "/archivo.html" }
+    { id: "archive", key: "nav.archive", label: "Proyectos", href: "/archivo.html" }
   ];
 
   function translate(key, fallback) {
@@ -103,8 +103,8 @@
         <footer class="bottom-bar">
           <div class="bottom-links">
             <a href="#" data-placeholder-link>Instagram</a>
-            <a href="mailto:contacto@tudominio.com" data-i18n="footer.email">${translate("footer.email", "Email")}</a>
-            <a href="#" data-placeholder-link data-i18n="footer.agency">${translate("footer.agency", "Agency")}</a>
+            <a href="mailto:diegotbenitez@gmail.com" data-i18n="footer.email">${translate("footer.email", "Email")}</a>
+            <a href="https://wa.me/34663269208" target="_blank" rel="noopener" data-i18n="footer.whatsapp">${translate("footer.whatsapp", "WhatsApp")}</a>
           </div>
           <span data-i18n="footer.location">${translate("footer.location", "Madrid · Espana · Disponible worldwide")}</span>
           <div class="bottom-links">
