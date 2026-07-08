@@ -298,7 +298,15 @@
 }
 
 .hero-mail input,
-.hero-mail textarea,
+.hero-mail textarea {
+  min-width: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-size: 8px;
+}
+
 .hero-mail button {
   min-width: 0;
   border: 0;
@@ -328,7 +336,8 @@
 
 .hero-mail input::placeholder,
 .hero-mail textarea::placeholder {
-  color: rgba(80, 80, 80, .3);
+  color: rgba(48, 48, 48, .62);
+  text-transform: uppercase;
 }
 
 .hero-mail button {

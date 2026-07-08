@@ -19,6 +19,14 @@
     `;
   }
 
+  function emailLink() {
+    const subject = encodeURIComponent("Contacto para Diego Assifawosen");
+    const body = encodeURIComponent(
+      "Hola Diego,\n\nMe gustaria contactar contigo para una posible colaboracion.\n\nGracias."
+    );
+    return `mailto:diegotbenitez@gmail.com?subject=${subject}&body=${body}`;
+  }
+
   class SiteHeader extends HTMLElement {
     connectedCallback() {
       const activePage = this.getAttribute("active-page") || "home";
@@ -102,8 +110,8 @@
       this.innerHTML = `
         <footer class="bottom-bar">
           <div class="bottom-links">
-            <a href="#" data-placeholder-link>Instagram</a>
-            <a href="mailto:diegotbenitez@gmail.com" data-i18n="footer.email">${translate("footer.email", "Email")}</a>
+            <a href="https://www.instagram.com/diegobennitezz/" target="_blank" rel="noopener">Instagram</a>
+            <a href="${emailLink()}" data-i18n="footer.email">${translate("footer.email", "Email")}</a>
             <a href="https://wa.me/34663269208" target="_blank" rel="noopener" data-i18n="footer.whatsapp">${translate("footer.whatsapp", "WhatsApp")}</a>
           </div>
           <span data-i18n="footer.location">${translate("footer.location", "Madrid · Espana · Disponible worldwide")}</span>

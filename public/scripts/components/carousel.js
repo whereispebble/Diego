@@ -4,9 +4,9 @@
   if (!carousel) return;
 
   const emailConfig = {
-    publicKey: "POrS9J_Lx5StD7b83",
-    serviceId: "service_d0g6u2h",
-    templateId: "template_9anwhs9"
+    publicKey: "ZyWgsmsQdiUfQb0al",
+    serviceId: "service_datbr",
+    templateId: "template_6ztug26"
   };
 
   const mobileViewport = window.matchMedia("(max-width: 800px)").matches;
@@ -256,13 +256,19 @@
 
     if (!window.emailjs || !button) return;
 
+    const templateParams = {
+      name: "Portfolio web Diego",
+      time: new Date().toLocaleString(),
+      email: mailForm.elements.email.value,
+      message: mailForm.elements.message.value
+    };
+
     button.textContent = t("home.sending");
     button.disabled = true;
     button.classList.remove("is-error");
-    mailForm.elements.time.value = new Date().toLocaleString();
 
     try {
-      await window.emailjs.sendForm(emailConfig.serviceId, emailConfig.templateId, mailForm, {
+      await window.emailjs.send(emailConfig.serviceId, emailConfig.templateId, templateParams, {
         publicKey: emailConfig.publicKey
       });
       button.textContent = t("home.sent");
